@@ -2,7 +2,7 @@
 
 namespace OpalaBlazor.Api.Repositories.Contracts
 {
-    public interface IConfig
+    public interface IConfigRepository
     {
         Task<IEnumerable<Config>> GetAll();
         Task<Config> GetOne(int id);

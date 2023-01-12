@@ -2,7 +2,7 @@
 
 namespace OpalaBlazor.Api.Repositories.Contracts
 {
-    public interface IPPA
+    public interface IPPARepository
     {
         Task<IEnumerable<PPA>> GetAll();
         Task<PPA> GetOne(int id);

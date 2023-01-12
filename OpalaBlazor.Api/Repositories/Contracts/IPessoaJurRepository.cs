@@ -2,7 +2,7 @@
 
 namespace OpalaBlazor.Api.Repositories.Contracts
 {
-    public interface IPessoaJur
+    public interface IPessoaJurRepository
     {
         Task<IEnumerable<PessoaJur>> GetAll();
         Task<PessoaJur> GetOne(int id);

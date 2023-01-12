@@ -2,7 +2,7 @@
 
 namespace OpalaBlazor.Api.Repositories.Contracts
 {
-    public interface ILDOLOA
+    public interface ILDOLOARepository
     {
         Task<IEnumerable<LDOLOA>> GetAll();
         Task<LDOLOA> GetOne(int id);

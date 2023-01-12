@@ -2,7 +2,7 @@
 
 namespace OpalaBlazor.Api.Repositories.Contracts
 {
-    public interface IInspecao
+    public interface IInspecaoRepository
     {
         Task<IEnumerable<Inspecao>> GetAll();
         Task<Inspecao> GetOne(int id);
