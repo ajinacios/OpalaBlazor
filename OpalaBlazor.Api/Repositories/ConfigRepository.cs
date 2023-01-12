@@ -17,14 +17,11 @@ namespace OpalaBlazor.Api.Repositories
         {
             if (config.ConfigId == 0)
             {
-                opalaDbContext.Add(config);
+                var result = opalaDbContext.Add(config);
                 await this.opalaDbContext.SaveChangesAsync();
-                return result.Entity;
+                //return result.Entity;
             }
-            else
-            {
-                return config;
-            }
+            return config;
         }
 
         public Task<Config> Delete(int id)
