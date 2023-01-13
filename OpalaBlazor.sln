@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpalaBlazor.Api", "OpalaBlazor.Api\OpalaBlazor.Api.csproj", "{5B436F9A-B983-4C70-A792-39AB12D91844}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpalaBlazor.Api", "OpalaBlazor.Api\OpalaBlazor.Api.csproj", "{5B436F9A-B983-4C70-A792-39AB12D91844}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpalaBlazor.Dtos", "OpalaBlazor.Dtos\OpalaBlazor.Dtos.csproj", "{A9615BA4-7998-48B1-918A-6620A217F78A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpalaBlazor.Models", "OpalaBlazor.Dtos\OpalaBlazor.Models.csproj", "{A9615BA4-7998-48B1-918A-6620A217F78A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpalaBlazor.Web", "OpalaBlazor.Web\OpalaBlazor.Web.csproj", "{A1E7B83A-F36C-4429-9570-7473A965A5AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpalaBlazor.Web", "OpalaBlazor.Web\OpalaBlazor.Web.csproj", "{A1E7B83A-F36C-4429-9570-7473A965A5AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

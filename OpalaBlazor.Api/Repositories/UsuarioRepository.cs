@@ -42,10 +42,11 @@ namespace OpalaBlazor.Api.Repositories
 
         public async Task<Usuario> OneId(int id)
         {
-            var usuario = opalaDbContext.usuarios.FirstOrDefault(x => x.UsuarioId == id);
+           // var usuario =  opalaDbContext.usuarios.FirstOrDefault(x => x.UsuarioId == id);
+            var usuario = await opalaDbContext.usuarios.FindAsync(id); 
             if (usuario == null)
             {
-                return new Usuario();
+                return usuario;
             }
             else
             {
@@ -56,7 +57,7 @@ namespace OpalaBlazor.Api.Repositories
 
         public async Task<Usuario> OneLogin(string login)
         {
-            var usuario = opalaDbContext.usuarios.FirstOrDefault(x => x.Login == login);
+            var usuario = await opalaDbContext.usuarios.FindAsync(login);
             if (usuario == null)
             {
                 return new Usuario();
@@ -69,7 +70,7 @@ namespace OpalaBlazor.Api.Repositories
 
         public async Task<Usuario> OneNome(string nome)
         {
-            var usuario = opalaDbContext.usuarios.FirstOrDefault(x => x.Nome == nome);
+            var usuario = await opalaDbContext.usuarios.FindAsync(nome);
             if (usuario == null)
             {
                 return new Usuario();

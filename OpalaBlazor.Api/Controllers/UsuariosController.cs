@@ -2,7 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using OpalaBlazor.Api.Data;
 using OpalaBlazor.Api.Entities;
+using OpalaBlazor.Api.Extensions;
 using OpalaBlazor.Api.Repositories;
+using OpalaBlazor.Models.Dtos;
 using System;
 
 namespace OpalaBlazor.Api.Controllers
@@ -19,36 +21,51 @@ namespace OpalaBlazor.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Usuario>>> ListAll()
+        public async Task<ActionResult<List<UsuarioDto>>> ListAll()
         {
             var usuarios = usuarioRepository.ListAll();
+            var usuarioDtos = usuarios.ConvertToDto();
             if (usuarios is null)
             {
                 return NotFound("Não existem usuários cadastrados.");
             }
-            return Ok(usuarios);
+            return Ok(usuarioDtos);
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Usuario>> Porid(int id)
+        public async Task<ActionResult<UsuarioDto>> Porid(int id)
         {
-            var usuario = usuarioRepository.OneId(id);
+            var usuario = await usuarioRepository.OneId(id);
+            var usuarioDto = usuario.ConvertToDto();
             if (usuario is null)
             {
                 return NotFound("Usuários não cadastrados.");
             }
-            return Ok(usuario);
+            return Ok(usuarioDto);
         }
 
         [HttpGet("{login}")]
-        public async Task<ActionResult<Usuario>> PorLogin(string login)
+        public async Task<ActionResult<UsuarioDto>> PorLogin(string login)
         {
-            var usuario = usuarioRepository.OneLogin(login);
+            var usuario = await usuarioRepository.OneLogin(login);
+            var usuarioDto = usuario.ConvertToDto();
             if (usuario is null)
             {
                 return NotFound("Usuários não cadastrados.");
             }
-            return Ok(usuario);
+            return Ok(usuarioDto);
+        }
+
+        [HttpGet("{nome}")]
+        public async Task<ActionResult<UsuarioDto>> PorNome(string nome)
+        {
+            var usuario = await usuarioRepository.OneLogin(nome);
+            var usuarioDto = usuario.ConvertToDto();
+            if (usuario is null)
+            {
+                return NotFound("Usuários não cadastrados.");
+            }
+            return Ok(usuarioDto);
         }
 
         [HttpPost]

@@ -21,7 +21,10 @@
 
   <ItemGroup>
     <Folder Include="Entities\" />
-    <Folder Include="Extensions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OpalaBlazor.Dtos\OpalaBlazor.Models.csproj" />
   </ItemGroup>
 
 </Project>
