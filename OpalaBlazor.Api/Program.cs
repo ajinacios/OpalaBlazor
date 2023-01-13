@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Net.Http.Headers;
 using OpalaBlazor.Api.Data;
+using OpalaBlazor.Api.Repositories;
+using OpalaBlazor.Api.Repositories.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +20,8 @@ builder.Services.AddDbContextPool<OpalaDbContext>(options =>
 options.UseMySql(mySqlConnection,
 ServerVersion.AutoDetect(mySqlConnection)));
 
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<IConfigRepository, ConfigRepository>();
 
 var app = builder.Build();
 
@@ -26,6 +31,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(policy =>
+    policy.WithOrigins("http://localhost:3010", "https://localhost:3010")
+    .AllowAnyMethod()
+    .WithHeaders(HeaderNames.ContentType)
+);
 
 app.UseHttpsRedirection();
 

@@ -1,4 +1,7 @@
 ﻿@page "/counter"
+@using OpalaBlazor.Models.Dtos;
+@using OpalaBlazor.Web.Services.Contracts;
+@inject IUsuarioService usuarioService
 
 <PageTitle>Counter</PageTitle>
 
@@ -7,12 +10,33 @@
 <p role="status">Current count: @currentCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<br />
+<br />
+<button class="btn btn-danger" @onclick="User">Click me</button>
+<br />
+<br />
+<h3> @user.Nome </h3>
+
 
 @code {
     private int currentCount = 0;
 
+    public UsuarioDto user = new UsuarioDto();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        User();
+    }
+
     private void IncrementCount()
     {
         currentCount++;
+    }
+
+    private async void User()
+    {
+        var id = 273;
+        user = await usuarioService.GetOneId(id);
     }
 }
