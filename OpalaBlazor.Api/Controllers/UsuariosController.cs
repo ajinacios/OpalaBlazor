@@ -19,7 +19,7 @@ namespace OpalaBlazor.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Usuario>>> ListAll()
+        public async Task<ActionResult<List<Usuario>>> ListAll()
         {
             var usuarios = usuarioRepository.ListAll();
             if (usuarios is null)
