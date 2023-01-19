@@ -1,6 +1,6 @@
 ﻿@page "/counter"
 @using OpalaBlazor.Models.Dtos;
-@using OpalaBlazor.Web.Services.Contracts;
+@using OpalaBlazor.Server.Services.Contracts;
 @inject IUsuarioService usuarioService
 
 <PageTitle>Counter</PageTitle>
@@ -15,6 +15,7 @@
 <button class="btn btn-danger" @onclick="User">Click me</button>
 <br />
 <br />
+<h3> @user.Nome </h3>
 
 
 <div class="tab-control">
@@ -38,12 +39,11 @@
     </div>
 </div>
 
-    <h3> @user.Nome </h3>
-
 
 @code {
     private int currentCount = 0;
-        private int SelectedTab { get; set; } = 1;
+
+    private int SelectedTab { get; set; } = 1;
 
     public UsuarioDto user = new UsuarioDto();
 

@@ -10,7 +10,7 @@ using System;
 namespace OpalaBlazor.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]/{action}")]
+    [Route("api/[controller]")]
     public class UsuariosController : ControllerBase
     {
         private UsuarioRepository usuarioRepository;
@@ -32,7 +32,8 @@ namespace OpalaBlazor.Api.Controllers
             return Ok(usuarioDtos);
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet]
+        [Route("porid/{id:int}")]
         public async Task<ActionResult<UsuarioDto>> Porid(int id)
         {
             var usuario = await usuarioRepository.OneId(id);

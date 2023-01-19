@@ -20,8 +20,9 @@ builder.Services.AddDbContextPool<OpalaDbContext>(options =>
 options.UseMySql(mySqlConnection,
 ServerVersion.AutoDetect(mySqlConnection)));
 
-builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-builder.Services.AddScoped<IConfigRepository, ConfigRepository>();
+//Builder.Services.AddSingleton<UsuarioService>();
+//builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+//builder.Services.AddScoped<IConfigRepository, ConfigRepository>();
 
 var app = builder.Build();
 
@@ -32,13 +33,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(policy =>
-    policy.WithOrigins("http://localhost:3010", "https://localhost:3010")
-    .AllowAnyMethod()
-    .WithHeaders(HeaderNames.ContentType)
-);
+//app.UseCors(policy =>
+//    policy.WithOrigins("http://localhost:3010", "https://localhost:3020")
+//    .AllowAnyMethod()
+//    .WithHeaders(HeaderNames.ContentType)
+//);
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
