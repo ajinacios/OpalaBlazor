@@ -45,7 +45,8 @@ namespace OpalaBlazor.Api.Controllers
             return Ok(usuarioDto);
         }
 
-        [HttpGet("{login}")]
+        [HttpGet]
+        [Route("porlogin/{login}")]
         public async Task<ActionResult<UsuarioDto>> PorLogin(string login)
         {
             var usuario = await usuarioRepository.OneLogin(login);
@@ -57,7 +58,8 @@ namespace OpalaBlazor.Api.Controllers
             return Ok(usuarioDto);
         }
 
-        [HttpGet("{nome}")]
+        [HttpGet]
+        [Route("porNome/{nome}")]
         public async Task<ActionResult<UsuarioDto>> PorNome(string nome)
         {
             var usuario = await usuarioRepository.OneLogin(nome);

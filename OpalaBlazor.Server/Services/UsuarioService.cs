@@ -72,18 +72,20 @@ namespace OpalaBlazor.Server.Services
         {
             try
             {
-                var response = await httpClient.GetAsync($"Usuarios/porlogin/{login}");
-                if (response.IsSuccessStatusCode)
+                var response = await httpClient.GetFromJsonAsync<UsuarioDto>($"api/usuarios/porlogin/{login}");
+                if (response != null)
                 {
-                    if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
-                    {
-                        return default(UsuarioDto);
-                    }
-                    return await response.Content.ReadFromJsonAsync<UsuarioDto>();
+                    return response;
+                    //if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    //{
+                    //    return default(UsuarioDto);
+                    //}
+                    //return await response.Content.ReadFromJsonAsync<UsuarioDto>();
                 }
                 else
                 {
-                    var message = await response.Content.ReadAsStringAsync();
+                    var message = "nulo";
+                    //var message = await response.Content.ReadAsStringAsync();
                     throw new Exception(message);
                 }
             }

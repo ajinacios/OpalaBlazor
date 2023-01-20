@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpalaBlazor.Models", "Opala
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpalaBlazor.Web", "OpalaBlazor.Web\OpalaBlazor.Web.csproj", "{A1E7B83A-F36C-4429-9570-7473A965A5AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpalaBlazor.Server", "OpalaBlazor.Server\OpalaBlazor.Server.csproj", "{BD083F8B-58EB-407E-B099-0DA1E2B2EDDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpalaBlazor.Server", "OpalaBlazor.Server\OpalaBlazor.Server.csproj", "{BD083F8B-58EB-407E-B099-0DA1E2B2EDDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

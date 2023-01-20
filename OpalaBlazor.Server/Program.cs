@@ -1,11 +1,17 @@
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+using OpalaBlazor.Server.Authentication;
 using OpalaBlazor.Server.Services;
 using OpalaBlazor.Server.Services.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAuthenticationCore();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddScoped<ProtectedSessionStorage>();
+builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 builder.Services.AddSingleton<UsuarioService>();
 builder.Services.AddHttpClient<IUsuarioService, UsuarioService>(client =>
 {

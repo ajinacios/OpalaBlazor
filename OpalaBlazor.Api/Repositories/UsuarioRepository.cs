@@ -57,7 +57,8 @@ namespace OpalaBlazor.Api.Repositories
 
         public async Task<Usuario> OneLogin(string login)
         {
-            var usuario = await opalaDbContext.usuarios.FindAsync(login);
+            //var usuario = await opalaDbContext.usuarios.FindAsync(login);
+            var usuario = opalaDbContext.usuarios.FirstOrDefault(x => x.Login == login);
             if (usuario == null)
             {
                 return new Usuario();
@@ -70,7 +71,7 @@ namespace OpalaBlazor.Api.Repositories
 
         public async Task<Usuario> OneNome(string nome)
         {
-            var usuario = await opalaDbContext.usuarios.FindAsync(nome);
+            var usuario = opalaDbContext.usuarios.FirstOrDefault(x => x.Nome == nome);
             if (usuario == null)
             {
                 return new Usuario();

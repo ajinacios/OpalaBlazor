@@ -1,4 +1,5 @@
 ﻿@page "/counter"
+@attribute [Authorize(Roles = "Administrador, User")]
 @using OpalaBlazor.Models.Dtos;
 @using OpalaBlazor.Server.Services.Contracts;
 @inject IUsuarioService usuarioService
@@ -60,7 +61,7 @@
 
     private async void User()
     {
-        var id = 273;
-        user = await usuarioService.GetOneId(id);
+        var id = "tce";
+        user = await usuarioService.GetOneLogin(id);
     }
 }

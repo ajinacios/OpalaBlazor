@@ -1,5 +1,5 @@
 ﻿@page "/fetchdata"
-
+@attribute [Authorize(Roles = "Administrador, User")]
 <PageTitle>Weather forecast</PageTitle>
 
 @using OpalaBlazor.Server.Data
