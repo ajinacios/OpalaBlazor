@@ -14,4 +14,5 @@
 
         public string? Ativo { get; set; }
     }
+
 }

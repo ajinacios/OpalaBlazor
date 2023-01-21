@@ -24,9 +24,12 @@ namespace OpalaBlazor.Api.Repositories
             return config;
         }
 
-        public Task<Config> Delete(int id)
+        public async Task<Config> Delete(int id)
         {
-            throw new NotImplementedException();
+            var config = opalaDbContext.config.FirstOrDefault(x => x.ConfigId == id);
+            opalaDbContext.Remove(config);
+            await this.opalaDbContext.SaveChangesAsync();
+            return config;
         }
 
         public Task<IEnumerable<Config>> GetAll()
@@ -39,9 +42,31 @@ namespace OpalaBlazor.Api.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<Config> Update(int id, Config config)
+        public async Task<IEnumerable<Config>> ListAll()
         {
-            throw new NotImplementedException();
+            var config = opalaDbContext.config.ToArray();
+            return config;
+        }
+
+        public async Task<Config> OneId(int id)
+        {
+            // var config =  opalaDbContext.config.FirstOrDefault(x => x.ConfigId == id);
+            var config = await opalaDbContext.config.FindAsync(id);
+            if (config == null)
+            {
+                return config;
+            }
+            else
+            {
+                return config;
+            }
+        }
+
+        public async Task<Config> Update(int id, Config config)
+        {
+            opalaDbContext.Update(config);
+            await this.opalaDbContext.SaveChangesAsync();
+            return config;
         }
     }
 }
