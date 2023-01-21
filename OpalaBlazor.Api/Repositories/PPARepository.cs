@@ -32,16 +32,6 @@ namespace OpalaBlazor.Api.Repositories
             return ppa;
         }
 
-        public Task<IEnumerable<PPA>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<PPA> GetOne(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IEnumerable<PPA>> ListAll()
         {
             var ppas = opalaDbContext.ppas.ToArray();

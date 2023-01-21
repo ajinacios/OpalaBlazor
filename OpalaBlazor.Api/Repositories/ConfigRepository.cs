@@ -32,16 +32,6 @@ namespace OpalaBlazor.Api.Repositories
             return config;
         }
 
-        public Task<IEnumerable<Config>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Config> GetOne(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IEnumerable<Config>> ListAll()
         {
             var config = opalaDbContext.config.ToArray();

@@ -32,16 +32,6 @@ namespace OpalaBlazor.Api.Repositories
             return processo;
         }
 
-        public Task<IEnumerable<Processo>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Processo> GetOne(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IEnumerable<Processo>> ListAll()
         {
             var processos = opalaDbContext.processos.ToArray();

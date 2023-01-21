@@ -33,16 +33,6 @@ namespace OpalaBlazor.Api.Repositories
             return ldoloa;
         }
 
-        public Task<IEnumerable<LDOLOA>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<LDOLOA> GetOne(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IEnumerable<LDOLOA>> ListAll()
         {
             var ldoloas = opalaDbContext.ldoloas.ToArray();

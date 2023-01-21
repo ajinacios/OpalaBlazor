@@ -33,16 +33,6 @@ namespace OpalaBlazor.Api.Repositories
             return servidor;
         }
 
-        public Task<IEnumerable<Servidor>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Servidor> GetOne(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IEnumerable<Servidor>> ListAll()
         {
             var servidores = opalaDbContext.servidores.ToArray();

@@ -33,16 +33,6 @@ namespace OpalaBlazor.Api.Repositories
             return relator;
         }
 
-        public Task<IEnumerable<Relator>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Relator> GetOne(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<IEnumerable<Relator>> ListAll()
         {
             var relatores = opalaDbContext.relatores.ToArray();
