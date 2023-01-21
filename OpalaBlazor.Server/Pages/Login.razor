@@ -1,13 +1,5 @@
 ﻿@page "/login"
 @inherits LoginBase
-@using Authentication
-@using OpalaBlazor.Models
-@using OpalaBlazor.Models.Dtos;
-@using OpalaBlazor.Server.Services.Contracts;
-@inject IUsuarioService userService
-@inject IJSRuntime js
-@inject AuthenticationStateProvider authStateProvider
-@inject NavigationManager navManager
 
 <div class="row">
     <div class="col-lg-4 offset-lg-4 pt-4 pb-4 border">
@@ -28,37 +20,3 @@
 
     </div>
 </div>
-
-@code {
-
-    public class Model
-    {
-        public string UserName { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-    }
-
-    public Model model = new Model();
-
-    public UsuarioDto userAccount = new UsuarioDto();
-
-    public async void Authenticate()
-    {
-        userAccount = await userService.GetOneLogin(model.Login);
-
-        if (userAccount == null || userAccount.Senha != model.Password)
-        {
-            await js.InvokeVoidAsync("alert", "Login ou Usuário Inválido.");
-            return;
-        }
-
-        var customAuthStateProvider = (CustomAuthenticationStateProvider)authStateProvider;
-        await customAuthStateProvider.UpdateAuthenticationState(new UserSession
-            {
-                UserName = userAccount.Nome,
-                Login = userAccount.Login,
-                Role = userAccount.Cargo
-            });
-        navManager.NavigateTo("/", true);
-    }
-}
