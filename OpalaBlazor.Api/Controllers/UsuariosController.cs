@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using OpalaBlazor.Api.Data;
 using OpalaBlazor.Api.Entities;
 using OpalaBlazor.Api.Extensions;
 using OpalaBlazor.Api.Repositories;
 using OpalaBlazor.Models.Dtos;
-using System;
 
 namespace OpalaBlazor.Api.Controllers
 {

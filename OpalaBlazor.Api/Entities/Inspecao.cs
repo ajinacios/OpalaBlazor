@@ -8,6 +8,8 @@ namespace OpalaBlazor.Api.Entities
         [Key]
         public int InspecaoId { get; set; }
         [Required]
+        [StringLength(9)]
+        public string? Numero { get; set; }
         [StringLength(4)]
         public string? Ano { get; set; }
         public DateTime Inicio { get; set;}

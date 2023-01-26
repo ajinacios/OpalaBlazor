@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OpalaBlazor.Models.Dtos
+﻿namespace OpalaBlazor.Models.Dtos
 {
     public class InspecaoDto
     {
         public int InspecaoId { get; set; }
 
-        public string? Nome { get; set; }
+        public string? Numero { get; set; }
 
-        public string? Login { get; set; }
+        public string? Ano { get; set; }
 
-        public string? Senha { get; set; }
+        public DateTime Inicio { get; set; }
 
-        public string? Cargo { get; set; }
+        public DateTime Final { get; set; }
 
-        public string? Ativo { get; set; }
+        public string? Portaria { get; set; }
+        public int OrgaoId { get; set; }
     }
 }

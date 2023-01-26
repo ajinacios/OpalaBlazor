@@ -31,14 +31,18 @@ namespace OpalaBlazor.Api.Repositories
             return inspecao;
         }
 
-        public Task<IEnumerable<Inspecao>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<Inspecao> GetOne(int id)
+        public async Task<Inspecao> OneNumero(string numero)
         {
-            throw new NotImplementedException();
+            var inspecao = await opalaDbContext.inspecoes.FindAsync(numero);
+            if (inspecao == null)
+            {
+                return inspecao;
+            }
+            else
+            {
+                return inspecao;
+            }
         }
 
         public async Task<IEnumerable<Inspecao>> ListAll()
