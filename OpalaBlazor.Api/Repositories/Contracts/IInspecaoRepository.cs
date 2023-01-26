@@ -4,7 +4,7 @@ namespace OpalaBlazor.Api.Repositories.Contracts
 {
     public interface IInspecaoRepository
     {
-        Task<IEnumerable<Inspecao>> ListAll();
+        IEnumerable<Inspecao> ListAll();
         Task<Inspecao> OneId(int id);
         Task<Inspecao> OneNumero(string numero);
         Task<Inspecao> Add(Inspecao inspecao);

@@ -38,7 +38,7 @@ namespace OpalaBlazor.Api.Controllers
             var usuarioDto = usuario.ConvertToDto();
             if (usuario is null)
             {
-                return NotFound("Usuários não cadastrados.");
+                return NotFound("Usuário não cadastrado.");
             }
             return Ok(usuarioDto);
         }
@@ -51,7 +51,7 @@ namespace OpalaBlazor.Api.Controllers
             var usuarioDto = usuario.ConvertToDto();
             if (usuario is null)
             {
-                return NotFound("Usuários não cadastrados.");
+                return NotFound("Usuário não cadastrado.");
             }
             return Ok(usuarioDto);
         }
@@ -64,7 +64,7 @@ namespace OpalaBlazor.Api.Controllers
             var usuarioDto = usuario.ConvertToDto();
             if (usuario is null)
             {
-                return NotFound("Usuários não cadastrados.");
+                return NotFound("Usuário não cadastrado.");
             }
             return Ok(usuarioDto);
         }

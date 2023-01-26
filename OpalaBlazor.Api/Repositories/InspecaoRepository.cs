@@ -18,7 +18,7 @@ namespace OpalaBlazor.Api.Repositories
             {
                 var result = opalaDbContext.Add(inspecao);
                 await this.opalaDbContext.SaveChangesAsync();
-                inspecao = opalaDbContext.inspecoes.FirstOrDefault(x => x.Portaria == inspecao.Portaria);
+                inspecao = opalaDbContext.inspecoes.FirstOrDefault(x => x.Numero == inspecao.Numero);
             }
             return inspecao;
         }
@@ -30,7 +30,6 @@ namespace OpalaBlazor.Api.Repositories
             await this.opalaDbContext.SaveChangesAsync();
             return inspecao;
         }
-
 
         public async Task<Inspecao> OneNumero(string numero)
         {
@@ -45,9 +44,9 @@ namespace OpalaBlazor.Api.Repositories
             }
         }
 
-        public async Task<IEnumerable<Inspecao>> ListAll()
+        public IEnumerable<Inspecao> ListAll()
         {
-            var inspecoes = opalaDbContext.inspecoes.ToArray();
+            var inspecoes =  opalaDbContext.inspecoes.ToArray();
             return inspecoes;
         }
 

@@ -1,0 +1,17 @@
+﻿@page "/numinspecao"
+@inherits NumInspecaoBase
+
+<br />
+<br />
+<div class="col-lg-4 offset-lg-4 pt-4 pb-4 border">
+    <EditForm Model="model" >
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <div class="form-group mb-3">
+            <InputText id="numero" class="form-control" placeholder="Número de inspeção" @bind-Value="model.Numero"></InputText>
+            <ValidationMessage For="@(() => model.Numero)" />
+        </div>
+        <div class="mb-3 d-grid gap-2">
+            <button class="btn btn-primary">Enviar</button>
+        </div>
+    </EditForm>
+</div>

@@ -9,14 +9,12 @@
     </NotAuthorized>
 </AuthorizeView>
 @*<SurveyPrompt Title="OPALA" />*@
-<h4>Opala - Sistema de Relatórios de Inspeção do Interior</h4>
-
-
+@*<h4>Opala - Sistema de Relatórios de Inspeção do Interior</h4>*@
 
 <AuthorizeView>
     <Authorized>
-        <br /><br />
-        <button class="btn btn-outline-primary" @onclick="DisplayGreetingAlert">Display</button>
+        <NumInspecao></NumInspecao>
+        @*<button class="btn btn-outline-primary" @onclick="DisplayGreetingAlert">Display</button>*@
     </Authorized>
 </AuthorizeView>
 
