@@ -7,7 +7,7 @@ using OpalaBlazor.Server.Services.Contracts;
 using Microsoft.JSInterop;
 using System;
 using Microsoft.AspNetCore.Components.Authorization;
-
+using System.ComponentModel.DataAnnotations;
 
 namespace OpalaBlazor.Server.Pages
 {
@@ -29,7 +29,9 @@ namespace OpalaBlazor.Server.Pages
         public class Model
         {
             public string UserName { get; set; }
+            [Required(ErrorMessage = "Login não pode ficar em branco.")]
             public string Login { get; set; }
+            [Required(ErrorMessage = "Senha não pode ficar em branco.")]
             public string Password { get; set; }
         }
 
