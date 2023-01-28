@@ -57,13 +57,14 @@ namespace OpalaBlazor.Server.Services
 
         public async Task<InspecaoDto> GetOneNumero(string numero)
         {
+            numero = numero.Substring(0, numero.Length - 5) + numero.Substring(numero.Length - 4);
             try
             {
                 var response = await httpClient.GetFromJsonAsync<InspecaoDto>($"api/inspecoes/pornumero/{numero}");
                 if (response != null)
                 {
                     return response;
-
+                    
                 }
                 else
                 {

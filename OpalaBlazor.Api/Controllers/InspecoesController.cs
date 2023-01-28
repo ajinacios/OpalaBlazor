@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing.Constraints;
 using OpalaBlazor.Api.Data;
 using OpalaBlazor.Api.Extensions;
 using OpalaBlazor.Api.Repositories;
@@ -49,13 +50,17 @@ namespace OpalaBlazor.Api.Controllers
         [Route("porNumero/{numero}")]
         public async Task<ActionResult<InspecaoDto>> PorNumero(string numero)
         {
-            var inspecao = await inspecaoRepository.OneNumero(numero);
-            var inspecaoDto = inspecao.ConvertToDto();
+            InspecaoDto inspecaoDto;
+            numero = numero.Substring(0, numero.Length - 4) + @"/" + numero.Substring(numero.Length - 4);
+            var inspecao = await inspecaoRepository.OneNumero(numero); 
+
             if (inspecao is null)
-            {
-                return NotFound("inspeção não cadastrada.");
-            }
+                inspecaoDto = new InspecaoDto();
+            else
+                inspecaoDto = inspecao.ConvertToDto();
+
             return Ok(inspecaoDto);
+
         }
     }
 }

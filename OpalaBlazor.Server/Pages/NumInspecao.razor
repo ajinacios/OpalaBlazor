@@ -2,16 +2,39 @@
 @inherits NumInspecaoBase
 
 <br />
-<br />
-<div class="col-lg-4 offset-lg-4 pt-4 pb-4 border">
-    <EditForm Model="model" >
-        <DataAnnotationsValidator></DataAnnotationsValidator>
-        <div class="form-group mb-3">
-            <InputText id="numero" class="form-control" placeholder="Número de inspeção" @bind-Value="model.Numero"></InputText>
-            <ValidationMessage For="@(() => model.Numero)" />
+<div class="col-sm-6">
+    <div class="card">
+        <div class="card-body">
+            <EditForm Model="inspecao" OnValidSubmit="Detalhar" class="row">
+                <DataAnnotationsValidator></DataAnnotationsValidator>
+                <div class="form-group mb-3 col-6">
+                    <InputText id="numero" class="form-control" placeholder="Número de inspeção" @bind-Value="inspecao.Numero"></InputText>
+                    <ValidationMessage For="@(() => inspecao.Numero)" />
+                </div>
+                <div class="mb-3 d-grid gap-2 col-1">
+                    <button class="btn btn-primary">Enviar</button>
+                </div>
+            </EditForm>
         </div>
-        <div class="mb-3 d-grid gap-2">
-            <button class="btn btn-primary">Enviar</button>
-        </div>
-    </EditForm>
+    </div>
 </div>
+
+@if (detalhe)
+{
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <EditForm Model="inspecao" class="row">
+                    <DataAnnotationsValidator></DataAnnotationsValidator>
+                    <div class="form-group mb-3 col-6">
+                        <InputText id="numero" class="form-control" placeholder="Número de inspeção" @bind-Value="inspecao.Ano"></InputText>
+                        <ValidationMessage For="@(() => inspecao.Numero)" />
+                    </div>
+                    <div class="mb-3 d-grid gap-2 col-1">
+                        <button class="btn btn-primary">Enviar</button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+}

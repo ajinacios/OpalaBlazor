@@ -33,7 +33,7 @@ namespace OpalaBlazor.Api.Repositories
 
         public async Task<Inspecao> OneNumero(string numero)
         {
-            var inspecao = await opalaDbContext.inspecoes.FindAsync(numero);
+            var inspecao = opalaDbContext.inspecoes.FirstOrDefault(x => x.Numero == numero);
             if (inspecao == null)
             {
                 return inspecao;
