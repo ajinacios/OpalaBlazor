@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.JSInterop;
 using OpalaBlazor.Models.Dtos;
 using OpalaBlazor.Server.Authentication;
-using System.Net.NetworkInformation;
-using OpalaBlazor.Models;
 using OpalaBlazor.Server.Services.Contracts;
-using Microsoft.JSInterop;
-using System;
-using Microsoft.AspNetCore.Components.Authorization;
 using System.ComponentModel.DataAnnotations;
 
 namespace OpalaBlazor.Server.Pages

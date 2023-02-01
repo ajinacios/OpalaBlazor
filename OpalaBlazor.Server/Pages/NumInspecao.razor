@@ -2,39 +2,55 @@
 @inherits NumInspecaoBase
 
 <br />
-<div class="col-sm-6">
-    <div class="card">
-        <div class="card-body">
-            <EditForm Model="inspecao" OnValidSubmit="Detalhar" class="row">
-                <DataAnnotationsValidator></DataAnnotationsValidator>
-                <div class="form-group mb-3 col-6">
-                    <InputText id="numero" class="form-control" placeholder="Número de inspeção" @bind-Value="inspecao.Numero"></InputText>
-                    <ValidationMessage For="@(() => inspecao.Numero)" />
-                </div>
-                <div class="mb-3 d-grid gap-2 col-1">
-                    <button class="btn btn-primary">Enviar</button>
-                </div>
-            </EditForm>
-        </div>
+<div class="container row">
+
+    <div class="col-5 pt-2 pb-2 mx-auto border bg-black bg-opacity-25 mt-2">
+        <EditForm Model="inspecao" OnValidSubmit="Detalhar" class="row">
+            <DataAnnotationsValidator></DataAnnotationsValidator>
+            <div class="form-group col-9">
+                <InputText id="numero" class="form-control" placeholder="Número de inspeção" @bind-Value="inspecao.Numero"></InputText>
+                <ValidationMessage For="@(() => inspecao.Numero)" />
+            </div>
+            <div class="col-3">
+                <button class="btn btn-primary"> Enviar </button>
+            </div>
+        </EditForm>
     </div>
 </div>
 
 @if (detalhe)
 {
-    <div class="col-sm-6">
-        <div class="card">
-            <div class="card-body">
-                <EditForm Model="inspecao" class="row">
-                    <DataAnnotationsValidator></DataAnnotationsValidator>
-                    <div class="form-group mb-3 col-6">
-                        <InputText id="numero" class="form-control" placeholder="Número de inspeção" @bind-Value="inspecao.Ano"></InputText>
-                        <ValidationMessage For="@(() => inspecao.Numero)" />
-                    </div>
-                    <div class="mb-3 d-grid gap-2 col-1">
-                        <button class="btn btn-primary">Enviar</button>
-                    </div>
-                </EditForm>
-            </div>
+    <div class="container row">
+        <div class="col-5 mx-auto mt-2 p-2 border bg-black bg-opacity-10">
+            <EditForm Model="inspecao" class="row ps-3">
+                <DataAnnotationsValidator></DataAnnotationsValidator>
+                <div class="form-group mb-3 col-2 ps-0">
+                    <InputText id="ano" class="form-control form-control-sm" placeholder="Ano" @bind-Value="inspecao.Ano"></InputText>
+                    <ValidationMessage For="@(() => inspecao.Ano)" />
+                </div>
+                <div class="form-group mb-3 col-5 ps-3">
+                    <InputDate id="inicial" class="form-control form-control-sm" placeholder="Inicial" @bind-Value="inspecao.Inicio"></InputDate>
+                    <ValidationMessage For="@(() => inspecao.Inicio)" />
+                </div>
+                <div class="form-group mb-3 col-5 ps-3">
+                    <InputDate id="final" class="form-control form-control-sm" placeholder="Final" @bind-Value="inspecao.Final"></InputDate>
+                    <ValidationMessage For="@(() => inspecao.Final)" />
+                </div>
+                <div class="form-group mb-3 col-6 ps-0">
+                    <InputText id="portaria" class="form-control form-control-sm" placeholder="Portaria" @bind-Value="inspecao.Portaria"></InputText>
+                    <ValidationMessage For="@(() => inspecao.Portaria)" />
+                </div>
+                <div class="col-6"></div>
+                <div class="form-group mb-3 col-10 ps-0">
+                    <InputText id="portaria" class="form-control form-control-sm" placeholder="Portaria" @bind-Value="inspecao.Portaria"></InputText>
+                    <ValidationMessage For="@(() => inspecao.Portaria)" />
+                </div>
+                <div class="col-2"></div>
+                <div class="t-4 d-grid gap-2 col-2 mx-auto">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+            </EditForm>
         </div>
     </div>
+
 }
