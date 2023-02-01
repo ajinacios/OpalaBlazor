@@ -19,7 +19,7 @@ namespace OpalaBlazor.Api.Repositories
             {
                 var result = opalaDbContext.Add(pessoaJur);
                 await this.opalaDbContext.SaveChangesAsync();
-                pessoaJur = opalaDbContext.pessoasJur.FirstOrDefault(x => x.Nome == pessoaJur.Nome);
+                pessoaJur = opalaDbContext.pessoasjur.FirstOrDefault(x => x.Nome == pessoaJur.Nome);
                 //return result.Entity;
             }
             return pessoaJur;
@@ -27,22 +27,22 @@ namespace OpalaBlazor.Api.Repositories
 
         public async Task<PessoaJur> Delete(int id)
         {
-            var pessoaJur = opalaDbContext.pessoasJur.FirstOrDefault(x => x.PessoaJurId == id);
+            var pessoaJur = opalaDbContext.pessoasjur.FirstOrDefault(x => x.PessoaJurId == id);
             opalaDbContext.Remove(pessoaJur);
             await this.opalaDbContext.SaveChangesAsync();
             return pessoaJur;
         }
 
-        public async Task<IEnumerable<PessoaJur>> ListAll()
+        public IEnumerable<PessoaJur> ListAll()
         {
-            var pessoasJur = opalaDbContext.pessoasJur.ToArray();
+            var pessoasJur = opalaDbContext.pessoasjur.ToArray();
             return pessoasJur;
         }
 
         public async Task<PessoaJur> OneId(int id)
         {
             // var usuario =  opalaDbContext.pessoasJur.FirstOrDefault(x => x.PessoaJurId == id);
-            var pessoaJur = await opalaDbContext.pessoasJur.FindAsync(id);
+            var pessoaJur = await opalaDbContext.pessoasjur.FindAsync(id);
             if (pessoaJur == null)
             {
                 return pessoaJur;
