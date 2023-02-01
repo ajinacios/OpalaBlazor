@@ -1,6 +1,8 @@
-﻿using OpalaBlazor.Models.Dtos;
+﻿using Newtonsoft.Json;
+using OpalaBlazor.Models.Dtos;
 using OpalaBlazor.Server.Pages;
 using OpalaBlazor.Server.Services.Contracts;
+using System.Collections.Generic;
 
 namespace OpalaBlazor.Server.Services
 {
@@ -13,18 +15,22 @@ namespace OpalaBlazor.Server.Services
             this.httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<InspecaoDto>> GetListAll()
+        public async Task<List<InspecaoDto>> GetListAll()
         {
+            List<InspecaoDto> inspecoes = new List<InspecaoDto>();
+
             try
             {
-                var response = await this.httpClient.GetAsync("api/inspecoes/ListAll");
+                var response = await this.httpClient.GetAsync("api/inspecoes");
                 if (response.IsSuccessStatusCode)
                 {
+                    var content = await response.Content.ReadAsStringAsync();
+                    inspecoes = JsonConvert.DeserializeObject<List<InspecaoDto>>(content);
                     if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
                     {
-                        return Enumerable.Empty<InspecaoDto>();
+                        return new List<InspecaoDto>();
                     }
-                    return await response.Content.ReadFromJsonAsync<IEnumerable<InspecaoDto>>();
+                    return inspecoes;
                 }
                 else
                 {
@@ -34,7 +40,6 @@ namespace OpalaBlazor.Server.Services
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

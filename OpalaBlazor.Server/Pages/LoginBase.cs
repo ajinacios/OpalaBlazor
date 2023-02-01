@@ -4,6 +4,7 @@ using Microsoft.JSInterop;
 using OpalaBlazor.Models.Dtos;
 using OpalaBlazor.Server.Authentication;
 using OpalaBlazor.Server.Services.Contracts;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace OpalaBlazor.Server.Pages
@@ -21,7 +22,7 @@ namespace OpalaBlazor.Server.Pages
 
         public Model model = new Model();
 
-        public UsuarioDto userAccount = new UsuarioDto();
+        public List<UsuarioDto> userAccounts = new List<UsuarioDto>();
 
         public class Model
         {
@@ -30,13 +31,29 @@ namespace OpalaBlazor.Server.Pages
             public string Login { get; set; }
             [Required(ErrorMessage = "Senha não pode ficar em branco.")]
             public string Password { get; set; }
+            public string Cargo { get; set; }
+        }
+
+        protected override async Task OnInitializedAsync()
+        {
+            userAccounts = (List<UsuarioDto>)await userService.GetListAll();
         }
 
         public async void Authenticate()
         {
-            userAccount = await userService.GetOneLogin(model.Login);
+            var logado = false;
+            foreach(var userAccount in userAccounts)
+            {
+                if (userAccount.Login == model.Login && userAccount.Senha == model.Password)
+                { 
+                    logado = true;
+                    model.UserName = userAccount.Nome;
+                    model.Cargo = userAccount.Cargo;
+                    break; 
+                }
+            }
 
-            if (userAccount == null || userAccount.Senha != model.Password)
+            if (!logado)
             {
                 await js.InvokeVoidAsync("alert", "Login ou Usuário Inválido.");
                 return;
@@ -45,9 +62,9 @@ namespace OpalaBlazor.Server.Pages
             var customAuthStateProvider = (CustomAuthenticationStateProvider)authStateProvider;
             await customAuthStateProvider.UpdateAuthenticationState(new UserSession
             {
-                UserName = userAccount.Nome,
-                Login = userAccount.Login,
-                Role = userAccount.Cargo
+                UserName = model.UserName,
+                Login = model.Login,
+                Role = model.Cargo
             });
             navManager.NavigateTo("/", true);
         }

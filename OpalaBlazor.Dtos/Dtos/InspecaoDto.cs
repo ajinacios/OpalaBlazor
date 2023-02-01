@@ -14,5 +14,6 @@
 
         public string? Portaria { get; set; }
         public int OrgaoId { get; set; }
+        public string? OrgaoNome { get; set; }
     }
 }

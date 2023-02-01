@@ -1,4 +1,5 @@
-﻿using OpalaBlazor.Models.Dtos;
+﻿using Newtonsoft.Json;
+using OpalaBlazor.Models.Dtos;
 using OpalaBlazor.Server.Services.Contracts;
 using System.Net.Http.Json;
 
@@ -13,18 +14,22 @@ namespace OpalaBlazor.Server.Services
             this.httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<UsuarioDto>> GetListAll()
+        public async Task<List<UsuarioDto>> GetListAll()
         {
+            List<UsuarioDto> users = new List<UsuarioDto>();
+
             try
             {
-                var response = await this.httpClient.GetAsync("api/usuarios/ListAll");
+                var response = await this.httpClient.GetAsync("api/usuarios");
                 if (response.IsSuccessStatusCode)
                 {
+                    var content = await response.Content.ReadAsStringAsync();
+                    users = JsonConvert.DeserializeObject<List<UsuarioDto>>(content);
                     if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
                     {
-                        return Enumerable.Empty<UsuarioDto>();
+                        return new List<UsuarioDto>();
                     }
-                    return await response.Content.ReadFromJsonAsync<IEnumerable<UsuarioDto>>();
+                    return users;
                 }
                 else
                 {

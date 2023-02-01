@@ -19,12 +19,25 @@ namespace OpalaBlazor.Server.Pages
 
         public InspecaoDto inspecao = new InspecaoDto();
 
+        public List<InspecaoDto> inspecoes = new List<InspecaoDto>();
+
         public bool detalhe = false;
 
+        protected override async Task OnInitializedAsync()
+        {
+            inspecoes = (List<InspecaoDto>)await inspecaoService.GetListAll();
+        }
 
         public async void Detalhar()
         {
-            inspecao = await inspecaoService.GetOneNumero(inspecao.Numero);
+            foreach(var inp in inspecoes)
+            {
+                if (inp.Numero == inspecao.Numero)
+                {
+                    inspecao = inp;
+                    break;
+                }
+            }
 
             if (inspecao.InspecaoId == 0)
             {
@@ -35,8 +48,7 @@ namespace OpalaBlazor.Server.Pages
             {
                 detalhe = true;
             }
-
-            
+    
         }
     }
 }
