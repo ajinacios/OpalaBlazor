@@ -51,5 +51,28 @@ namespace OpalaBlazor.Api.Extensions
                 Email = pj.Email
             };
         }
+
+        public static PessoaJur UnConvertFromDto(this PessoaJurDto pjdto)
+        {
+
+            return new PessoaJur
+            {
+                PessoaJurId = pjdto.PessoaJurId,
+                Nome = pjdto.Nome,
+                Tipo = pjdto.Tipo,
+                CNPJ = pjdto.CNPJ,
+                Logradouro = pjdto.Logradouro,
+                Complemento = pjdto.Complemento,
+                Bairro = pjdto.Bairro,
+                CEP = pjdto.CEP,
+                Numero = pjdto.Numero,
+                Cidade = pjdto.Cidade,
+                UF = pjdto.UF,
+                Telefone1 = pjdto.Telefone1,
+                Telefone2 = pjdto.Telefone2,
+                Site = pjdto.Site,
+                Email = pjdto.Email
+            };
+        }
     }
 }

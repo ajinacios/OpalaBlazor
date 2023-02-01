@@ -34,5 +34,19 @@ namespace OpalaBlazor.Api.Extensions
                 Cargo = usuario.Cargo
             };
         }
+
+        public static Usuario UnConvertFromDto(this UsuarioDto usuariodto)
+        {
+
+            return new Usuario
+            {
+                UsuarioId = usuariodto.UsuarioId,
+                Nome = usuariodto.Nome,
+                Login = usuariodto.Login,
+                Senha = usuariodto.Senha,
+                Ativo = usuariodto.Ativo,
+                Cargo = usuariodto.Cargo
+            };
+        }
     }
 }

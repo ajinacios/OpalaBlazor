@@ -47,5 +47,20 @@ namespace OpalaBlazor.Api.Extensions
                 OrgaoNome = pj.Nome
             };
         }
+
+        public static Inspecao UnConvertFromDto(this InspecaoDto inspecaodto)
+        {
+
+            return new Inspecao
+            {
+                InspecaoId = inspecaodto.InspecaoId,
+                Numero = inspecaodto.Numero,
+                Ano = inspecaodto.Ano,
+                Inicio = inspecaodto.Inicio,
+                Final = inspecaodto.Final,
+                Portaria = inspecaodto.Portaria,
+                OrgaoId = inspecaodto.OrgaoId,
+            };
+        }
     }
 }
