@@ -13,6 +13,8 @@ namespace OpalaBlazor.Server.Pages
         [Inject]
         public IInspecaoService inspecaoService { get; set; }
         [Inject]
+        public IPessoaJurService pjService { get; set; }
+        [Inject]
         public IJSRuntime js { get; set; }
         [Inject]
         public NavigationManager navManager { get; set; }
@@ -21,11 +23,23 @@ namespace OpalaBlazor.Server.Pages
 
         public List<InspecaoDto> inspecoes = new List<InspecaoDto>();
 
+        public List<PessoaJurDto> pjs = new List<PessoaJurDto>();
+
         public bool detalhe = false;
+
+        // -----------------------
+        public Filtro filtro = new Filtro();
+
+        public class Filtro
+        {
+            public string Texto { get; set; }
+        }
+        //---------------------
 
         protected override async Task OnInitializedAsync()
         {
             inspecoes = (List<InspecaoDto>)await inspecaoService.GetListAll();
+            pjs = (List<PessoaJurDto>)await pjService.GetListAll();
         }
 
         public async void Detalhar()

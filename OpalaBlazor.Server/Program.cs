@@ -12,6 +12,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<ProtectedSessionStorage>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+
 builder.Services.AddSingleton<UsuarioService>();
 builder.Services.AddHttpClient<IUsuarioService, UsuarioService>(client =>
 {
@@ -19,6 +20,11 @@ builder.Services.AddHttpClient<IUsuarioService, UsuarioService>(client =>
 });
 builder.Services.AddSingleton<InspecaoService>();
 builder.Services.AddHttpClient<IInspecaoService, InspecaoService>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:3000");
+});
+builder.Services.AddSingleton<PessoaJurService>();
+builder.Services.AddHttpClient<IPessoaJurService, PessoaJurService>(client =>
 {
     client.BaseAddress = new Uri("https://localhost:3000");
 });

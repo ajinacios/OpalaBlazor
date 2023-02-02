@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpalaBlazor.Web", "OpalaBla
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpalaBlazor.Server", "OpalaBlazor.Server\OpalaBlazor.Server.csproj", "{BD083F8B-58EB-407E-B099-0DA1E2B2EDDD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpalaForm", "OpalaForm\OpalaForm.csproj", "{D826E183-7874-4161-9A6C-987E6876FA9C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{BD083F8B-58EB-407E-B099-0DA1E2B2EDDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD083F8B-58EB-407E-B099-0DA1E2B2EDDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD083F8B-58EB-407E-B099-0DA1E2B2EDDD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D826E183-7874-4161-9A6C-987E6876FA9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D826E183-7874-4161-9A6C-987E6876FA9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D826E183-7874-4161-9A6C-987E6876FA9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D826E183-7874-4161-9A6C-987E6876FA9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -42,7 +42,17 @@
                 </div>
                 <div class="col-6"></div>
                 <div class="form-group mb-3 col-10 ps-0">
-                    <InputText id="orgao" class="form-control form-control-sm" placeholder="Órgão" @bind-Value="inspecao.OrgaoNome"></InputText>
+                    <InputText id="orga" class="form-control form-control-sm" placeholder="Órgão" @bind-Value="inspecao.OrgaoNome"></InputText>
+                    <ValidationMessage For="@(() => inspecao.OrgaoNome)" />
+                </div>
+                <div class="form-group mb-3 col-11 ps-0">
+                    <InputSelect id="orgao" class="form-control form-select-sm" @bind-Value="inspecao.OrgaoNome">
+                        <option value="">Selecione o Órgão</option>
+                        @foreach (var pj in pjs)
+                        {
+                            <option>@pj.Nome</option>
+                        }
+                    </InputSelect>
                     <ValidationMessage For="@(() => inspecao.OrgaoNome)" />
                 </div>
                 <div class="col-2"></div>
