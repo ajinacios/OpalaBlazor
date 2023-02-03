@@ -28,6 +28,16 @@ builder.Services.AddHttpClient<IPessoaJurService, PessoaJurService>(client =>
 {
     client.BaseAddress = new Uri("https://localhost:3000");
 });
+builder.Services.AddSingleton<PessoaFisService>();
+builder.Services.AddHttpClient<IPessoaFisService, PessoaFisService>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:3000");
+});
+builder.Services.AddSingleton<ServidorService>();
+builder.Services.AddHttpClient<IServidorService, ServidorService>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:3000");
+});
 
 var app = builder.Build();
 

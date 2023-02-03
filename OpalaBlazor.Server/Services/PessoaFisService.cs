@@ -4,30 +4,30 @@ using OpalaBlazor.Server.Services.Contracts;
 
 namespace OpalaBlazor.Server.Services
 {
-    public class PessoaJurService : IPessoaJurService
+    public class PessoaFisService : IPessoaFisService
     {
         private readonly HttpClient httpClient;
 
-        public PessoaJurService(HttpClient httpClient)
+        public PessoaFisService(HttpClient httpClient)
         {
             this.httpClient = httpClient;
         }
-        public async Task<List<PessoaJurDto>> GetListAll()
+        public async Task<List<PessoaFisDto>> GetListAll()
         {
-            List<PessoaJurDto> pjs = new List<PessoaJurDto>();
+            List<PessoaFisDto> pfs = new List<PessoaFisDto>();
 
             try
             {
-                var response = await this.httpClient.GetAsync("api/pessoasjur");
+                var response = await this.httpClient.GetAsync("api/pessoasfis");
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    pjs = JsonConvert.DeserializeObject<List<PessoaJurDto>>(content);
+                    pfs = JsonConvert.DeserializeObject<List<PessoaFisDto>>(content);
                     if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
                     {
-                        return new List<PessoaJurDto>();
+                        return new List<PessoaFisDto>();
                     }
-                    return pjs;
+                    return pfs;
                 }
                 else
                 {
@@ -41,22 +41,22 @@ namespace OpalaBlazor.Server.Services
             }
         }
 
-        public Task<PessoaJurDto> GetOneCNPJ(string CNPJ)
+        public Task<PessoaFisDto> GetOneCPF(string CPF)
         {
             throw new NotImplementedException();
         }
 
-        public Task<PessoaJurDto> GetOneEMail(string email)
+        public Task<PessoaFisDto> GetOneEMail(string email)
         {
             throw new NotImplementedException();
         }
 
-        public Task<PessoaJurDto> GetOneId(int id)
+        public Task<PessoaFisDto> GetOneId(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<PessoaJurDto> GetOneNome(string nome)
+        public Task<PessoaFisDto> GetOneNome(string nome)
         {
             throw new NotImplementedException();
         }

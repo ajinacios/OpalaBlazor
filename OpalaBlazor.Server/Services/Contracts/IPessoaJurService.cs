@@ -6,7 +6,8 @@ namespace OpalaBlazor.Server.Services.Contracts
     {
         Task<List<PessoaJurDto>> GetListAll();
         Task<PessoaJurDto> GetOneId(int id);
-        Task<PessoaJurDto> GetOneNumero(string nome);
+        Task<PessoaJurDto> GetOneNome(string nome);
         Task<PessoaJurDto> GetOneCNPJ(string CNPJ);
+        Task<PessoaJurDto> GetOneEMail(string email);
     }
 }
