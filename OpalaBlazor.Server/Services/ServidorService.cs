@@ -41,6 +41,35 @@ namespace OpalaBlazor.Server.Services
             }
         }
 
+        public async Task<List<ServidorMinDto>> GetListAllMin()
+        {
+            List<ServidorMinDto> servidores = new List<ServidorMinDto>();
+
+            try
+            {
+                var response = await this.httpClient.GetAsync("api/servidores/minimo");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    servidores = JsonConvert.DeserializeObject<List<ServidorMinDto>>(content);
+                    if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    {
+                        return new List<ServidorMinDto>();
+                    }
+                    return servidores;
+                }
+                else
+                {
+                    var message = await response.Content.ReadAsStringAsync();
+                    throw new Exception(message);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public Task<ServidorDto> GetOneEMail(string email)
         {
             throw new NotImplementedException();

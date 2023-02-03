@@ -30,5 +30,19 @@ namespace OpalaBlazor.Api.Controllers
             }
             return Ok(servidorDtos);
         }
+
+        [HttpGet]
+        [Route("minimo")]
+        public async Task<ActionResult<List<ServidorMinDto>>> ListAllMin()
+        {
+            var servidores = servidorRepository.ListAll();
+            var servidorDtos = servidores.ConvertToDtoMin();
+
+            if (servidores is null)
+            {
+                return NotFound("Não existem servidores cadastrados.");
+            }
+            return Ok(servidorDtos);
+        }
     }
 }

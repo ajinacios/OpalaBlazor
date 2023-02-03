@@ -15,15 +15,19 @@ namespace OpalaBlazor.Server.Pages
         [Inject]
         public IPessoaJurService pjService { get; set; }
         [Inject]
+        public IPessoaFisService pfService { get; set; }
+        [Inject]
+        public IServidorService servidorService { get; set; }
+        [Inject]
         public IJSRuntime js { get; set; }
         [Inject]
         public NavigationManager navManager { get; set; }
 
         public InspecaoDto inspecao = new InspecaoDto();
-
         public List<InspecaoDto> inspecoes = new List<InspecaoDto>();
-
         public List<PessoaJurDto> pjs = new List<PessoaJurDto>();
+        public List<PessoaFisDto> pfs = new List<PessoaFisDto>();
+        public List<ServidorMinDto> servidores = new List<ServidorMinDto>();
 
         public bool detalhe = false;
 
@@ -40,6 +44,8 @@ namespace OpalaBlazor.Server.Pages
         {
             inspecoes = (List<InspecaoDto>)await inspecaoService.GetListAll();
             pjs = (List<PessoaJurDto>)await pjService.GetListAll();
+            pfs = (List<PessoaFisDto>)await pfService.GetListAll();
+            servidores = (List<ServidorMinDto>)await servidorService.GetListAllMin();
         }
 
         public async void Detalhar()

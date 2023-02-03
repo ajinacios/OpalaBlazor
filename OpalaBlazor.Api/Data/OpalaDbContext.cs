@@ -1,12 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OpalaBlazor.Api.Entities;
-using System.Diagnostics;
 
 namespace OpalaBlazor.Api.Data
 {
     public class OpalaDbContext : DbContext
     {
-        internal object pessoasFis;
+        //internal object pessoasFis;
 
         public OpalaDbContext(DbContextOptions<OpalaDbContext> options) : base(options) { }
         public DbSet<Config>? config { get; set; }
@@ -19,5 +18,12 @@ namespace OpalaBlazor.Api.Data
         public DbSet<Relator>? relatores { get; set; }
         public DbSet<Servidor>? servidores { get; set; }
         public DbSet<Usuario>? usuarios { get; set; }
+        public DbSet<InspecaoServidor>? inspecaoservidor { get; set; }
+        public DbSet<InspecaoResp>? inspecaoresps { get; set; }
     }
 }
+
+// Add-Migration InitialCreate
+// Update-Database
+
+// Toda tabela tem que ter Id, mesmo as de ligação
