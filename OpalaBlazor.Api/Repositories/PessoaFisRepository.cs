@@ -33,7 +33,7 @@ namespace OpalaBlazor.Api.Repositories
             return pessoaFis;
         }
 
-        public async Task<IEnumerable<PessoaFis>> ListAll()
+        public IEnumerable<PessoaFis> ListAll()
         {
             var pessoasfis = opalaDbContext.pessoasfis.ToArray();
             return pessoasfis;

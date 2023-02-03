@@ -33,7 +33,7 @@ namespace OpalaBlazor.Api.Repositories
             return servidor;
         }
 
-        public async Task<IEnumerable<Servidor>> ListAll()
+        public IEnumerable<Servidor> ListAll()
         {
             var servidores = opalaDbContext.servidores.ToArray();
             return servidores;

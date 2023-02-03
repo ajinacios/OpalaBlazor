@@ -4,7 +4,7 @@ namespace OpalaBlazor.Api.Repositories.Contracts
 {
     public interface IServidorRepository
     {
-        Task<IEnumerable<Servidor>> ListAll();
+        IEnumerable<Servidor> ListAll();
         Task<Servidor> OneId(int id);
         Task<Servidor> Add(Servidor servidor);
         Task<Servidor> Delete(int id);

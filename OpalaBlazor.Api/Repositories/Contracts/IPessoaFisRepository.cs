@@ -4,7 +4,7 @@ namespace OpalaBlazor.Api.Repositories.Contracts
 {
     public interface IPessoaFisRepository
     {
-        Task<IEnumerable<PessoaFis>> ListAll();
+        IEnumerable<PessoaFis> ListAll();
         Task<PessoaFis> OneId(int id);
         Task<PessoaFis> Add(PessoaFis pessoaFis);
         Task<PessoaFis> Delete(int id);
