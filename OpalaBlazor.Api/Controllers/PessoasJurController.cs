@@ -32,5 +32,19 @@ namespace OpalaBlazor.Api.Controllers
             return Ok(pjDtos);
         }
 
+        [HttpGet]
+        [Route("minimo")]
+        public async Task<ActionResult<List<PessoaJurMinDto>>> ListAllMin()
+        {
+            var pjs = pjRepository.ListAll();
+            var pjDtos = pjs.ConvertToDtoMin();
+
+            if (pjs is null)
+            {
+                return NotFound("Não existem entidades cadastradas.");
+            }
+            return Ok(pjDtos);
+        }
+
     }
 }

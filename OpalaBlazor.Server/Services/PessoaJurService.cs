@@ -41,6 +41,35 @@ namespace OpalaBlazor.Server.Services
             }
         }
 
+        public async Task<List<PessoaJurMinDto>> GetListAllMin()
+        {
+            List<PessoaJurMinDto> pjs = new List<PessoaJurMinDto>();
+
+            try
+            {
+                var response = await this.httpClient.GetAsync("api/pessoasjur/minimo");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    pjs = JsonConvert.DeserializeObject<List<PessoaJurMinDto>>(content);
+                    if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    {
+                        return new List<PessoaJurMinDto>();
+                    }
+                    return pjs;
+                }
+                else
+                {
+                    var message = await response.Content.ReadAsStringAsync();
+                    throw new Exception(message);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public Task<PessoaJurDto> GetOneCNPJ(string CNPJ)
         {
             throw new NotImplementedException();

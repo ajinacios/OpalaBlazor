@@ -41,6 +41,35 @@ namespace OpalaBlazor.Server.Services
             }
         }
 
+        public async Task<List<PessoaFisMinDto>> GetListAllMin()
+        {
+            List<PessoaFisMinDto> pfs = new List<PessoaFisMinDto>();
+
+            try
+            {
+                var response = await this.httpClient.GetAsync("api/pessoasfis/minimo");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    pfs = JsonConvert.DeserializeObject<List<PessoaFisMinDto>>(content);
+                    if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    {
+                        return new List<PessoaFisMinDto>();
+                    }
+                    return pfs;
+                }
+                else
+                {
+                    var message = await response.Content.ReadAsStringAsync();
+                    throw new Exception(message);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public Task<PessoaFisDto> GetOneCPF(string CPF)
         {
             throw new NotImplementedException();

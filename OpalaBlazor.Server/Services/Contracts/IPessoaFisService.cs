@@ -5,6 +5,7 @@ namespace OpalaBlazor.Server.Services.Contracts
     public interface IPessoaFisService
     {
         Task<List<PessoaFisDto>> GetListAll();
+        Task<List<PessoaFisMinDto>> GetListAllMin();
         Task<PessoaFisDto> GetOneId(int id);
         Task<PessoaFisDto> GetOneNome(string nome);
         Task<PessoaFisDto> GetOneCPF(string CPF);

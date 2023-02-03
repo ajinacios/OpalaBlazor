@@ -30,5 +30,19 @@ namespace OpalaBlazor.Api.Controllers
             }
             return Ok(pfDtos);
         }
+
+        [HttpGet]
+        [Route("minimo")]
+        public async Task<ActionResult<List<PessoaFisMinDto>>> ListAllMin()
+        {
+            var pfs = pfRepository.ListAll();
+            var pfDtos = pfs.ConvertToDtoMin();
+
+            if (pfs is null)
+            {
+                return NotFound("Não existem pessoas cadastradas.");
+            }
+            return Ok(pfDtos);
+        }
     }
 }

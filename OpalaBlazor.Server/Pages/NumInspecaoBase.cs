@@ -25,8 +25,8 @@ namespace OpalaBlazor.Server.Pages
 
         public InspecaoDto inspecao = new InspecaoDto();
         public List<InspecaoDto> inspecoes = new List<InspecaoDto>();
-        public List<PessoaJurDto> pjs = new List<PessoaJurDto>();
-        public List<PessoaFisDto> pfs = new List<PessoaFisDto>();
+        public List<PessoaJurMinDto> pjs = new List<PessoaJurMinDto>();
+        public List<PessoaFisMinDto> pfs = new List<PessoaFisMinDto>();
         public List<ServidorMinDto> servidores = new List<ServidorMinDto>();
 
         public bool detalhe = false;
@@ -43,8 +43,8 @@ namespace OpalaBlazor.Server.Pages
         protected override async Task OnInitializedAsync()
         {
             inspecoes = (List<InspecaoDto>)await inspecaoService.GetListAll();
-            pjs = (List<PessoaJurDto>)await pjService.GetListAll();
-            pfs = (List<PessoaFisDto>)await pfService.GetListAll();
+            pjs = (List<PessoaJurMinDto>)await pjService.GetListAllMin();
+            pfs = (List<PessoaFisMinDto>)await pfService.GetListAllMin();
             servidores = (List<ServidorMinDto>)await servidorService.GetListAllMin();
         }
 
