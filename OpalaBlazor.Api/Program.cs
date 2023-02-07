@@ -1,8 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Net.Http.Headers;
 using OpalaBlazor.Api.Data;
-using OpalaBlazor.Api.Repositories;
-using OpalaBlazor.Api.Repositories.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 

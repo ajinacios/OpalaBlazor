@@ -70,6 +70,20 @@ namespace OpalaBlazor.Server.Pages
             }
     
         }
+
+        protected async Task Counter()
+        {
+            try
+            {
+                navManager.NavigateTo("/counter");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+        }
     }
 }
 
