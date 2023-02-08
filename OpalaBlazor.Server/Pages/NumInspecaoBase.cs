@@ -55,6 +55,7 @@ namespace OpalaBlazor.Server.Pages
                 if (inp.Numero == inspecao.Numero)
                 {
                     inspecao = inp;
+                    GlobalData.inspecao = inp.Numero;
                     break;
                 }
             }

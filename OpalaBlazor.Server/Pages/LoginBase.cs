@@ -49,6 +49,8 @@ namespace OpalaBlazor.Server.Pages
                     logado = true;
                     model.UserName = userAccount.Nome;
                     model.Cargo = userAccount.Cargo;
+                    GlobalData.usuario = userAccount.Nome;
+                    GlobalData.login = userAccount.Login;
                     break; 
                 }
             }
