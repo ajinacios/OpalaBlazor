@@ -16,12 +16,12 @@ namespace OpalaBlazor.Api.Repositories
         }
         public IEnumerable<InspecaoServidor> ListPorInspecao(int idinspecao)
         {
-            return opalaDbContext.inspecaoservidor.Include(x => x.InspecaoId == idinspecao);
+            return opalaDbContext.inspecaoservidor.FromSqlRaw($"Select * from inspecaoservidor where inspecaoid={idinspecao}").ToArray();
         }
 
         public IEnumerable<InspecaoServidor> ListPorServidor(int idservidor)
         {
-            return opalaDbContext.inspecaoservidor.Include(x => x.ServidorId == idservidor);
+            return opalaDbContext.inspecaoservidor.FromSqlRaw($"Select * from inspecaoservidor where servidorid={idservidor}").ToArray();
         }
     }
 }

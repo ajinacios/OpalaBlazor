@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OpalaBlazor.Api.Data;
 
@@ -10,9 +11,10 @@ using OpalaBlazor.Api.Data;
 namespace OpalaBlazor.Api.Migrations
 {
     [DbContext(typeof(OpalaDbContext))]
-    partial class OpalaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230209124251_inspecaoservidor")]
+    partial class inspecaoservidor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

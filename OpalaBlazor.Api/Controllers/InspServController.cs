@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using OpalaBlazor.Api.Data;
 using OpalaBlazor.Api.Extensions;
 using OpalaBlazor.Api.Repositories;
@@ -23,7 +22,7 @@ namespace OpalaBlazor.Api.Controllers
         }
 
         [HttpGet]
-        [Route("insp/{insp: int}")]
+        [Route("insp/{insp:int}")]
         public async Task<ActionResult<List<InspecaoServidorDto>>> ListPorInspecao(int insp)
         {
             var inspservs = inspecaoServRepository.ListPorInspecao(insp);
@@ -37,7 +36,7 @@ namespace OpalaBlazor.Api.Controllers
         }
 
         [HttpGet]
-        [Route("insp/amp/{insp: int}")]
+        [Route("insp/amp/{insp:int}")]
         public async Task<ActionResult<List<InspecaoServAmpDto>>> ListPorInspecaoAmp(int insp)
         {
             var inspservs = inspecaoServRepository.ListPorInspecao(insp);
@@ -53,7 +52,7 @@ namespace OpalaBlazor.Api.Controllers
         }
 
         [HttpGet]
-        [Route("serv/{serv: int}")]
+        [Route("serv/{serv:int}")]
         public async Task<ActionResult<List<InspecaoServidorDto>>> ListPorServidor(int serv)
         {
             var inspservs = inspecaoServRepository.ListPorServidor(serv);
@@ -67,7 +66,7 @@ namespace OpalaBlazor.Api.Controllers
         }
 
         [HttpGet]
-        [Route("serv/amp/{serv: int}")]
+        [Route("serv/amp/{serv:int}")]
         public async Task<ActionResult<List<InspecaoServAmpDto>>> ListPorServidorAmp(int serv)
         {
             var inspservs = inspecaoServRepository.ListPorServidor(serv);
