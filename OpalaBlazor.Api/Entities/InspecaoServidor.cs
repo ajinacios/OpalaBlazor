@@ -12,9 +12,9 @@ namespace OpalaBlazor.Api.Entities
         public int ServidorId { get; set; }
         [Required]
         [StringLength(8)]
-        public string Setor { get;}
+        public string Setor { get; set; }
         [Required]
         [StringLength(1)]
-        public string Funcao { get; }
+        public string Funcao { get; set; }
     }
 }

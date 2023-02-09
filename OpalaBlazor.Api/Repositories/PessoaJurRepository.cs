@@ -35,8 +35,7 @@ namespace OpalaBlazor.Api.Repositories
 
         public IEnumerable<PessoaJur> ListAll()
         {
-            var pessoasJur = opalaDbContext.pessoasjur.ToArray();
-            return pessoasJur;
+            return opalaDbContext.pessoasjur.ToArray();
         }
 
         public async Task<PessoaJur> OneId(int id)

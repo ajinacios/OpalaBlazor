@@ -35,8 +35,7 @@ namespace OpalaBlazor.Api.Repositories
 
         public IEnumerable<Servidor> ListAll()
         {
-            var servidores = opalaDbContext.servidores.ToArray();
-            return servidores;
+            return opalaDbContext.servidores.ToArray();
         }
 
         public async Task<Servidor> OneId(int id)

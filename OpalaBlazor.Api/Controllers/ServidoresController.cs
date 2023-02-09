@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OpalaBlazor.Api.Data;
-using OpalaBlazor.Api.Entities;
 using OpalaBlazor.Api.Extensions;
 using OpalaBlazor.Api.Repositories;
 using OpalaBlazor.Models.Dtos;
@@ -44,5 +43,6 @@ namespace OpalaBlazor.Api.Controllers
             }
             return Ok(servidorDtos);
         }
+
     }
 }

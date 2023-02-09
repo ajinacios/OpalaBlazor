@@ -1,0 +1,59 @@
+﻿@page "/inspecaodata"
+@inherits InspecaoDataBase
+
+@*<hr />
+<div class="container row">
+
+   <div class="container row col-6">
+        <div class="col-12 mx-auto p-2 border bg-black bg-opacity-10">
+            <EditForm Model="inspecao" class="row ps-3">
+                <DataAnnotationsValidator></DataAnnotationsValidator>
+                <div class="form-group mb-3 col-2 ps-0">
+                    <InputText id="ano" class="form-control form-control-sm" placeholder="Ano" @bind-Value="inspecao.Ano"></InputText>
+                    <ValidationMessage For="@(() => inspecao.Ano)" />
+                </div>
+                <div class="form-group mb-3 col-5 ps-3">
+                    <InputDate id="inicial" class="form-control form-control-sm" placeholder="Inicial" @bind-Value="inspecao.Inicio"></InputDate>
+                    <ValidationMessage For="@(() => inspecao.Inicio)" />
+                </div>
+                <div class="form-group mb-3 col-5 ps-3">
+                    <InputDate id="final" class="form-control form-control-sm" placeholder="Final" @bind-Value="inspecao.Final"></InputDate>
+                    <ValidationMessage For="@(() => inspecao.Final)" />
+                </div>
+                <div class="form-group mb-3 col-6 ps-0">
+                    <InputText id="portaria" class="form-control form-control-sm" placeholder="Portaria" @bind-Value="inspecao.Portaria"></InputText>
+                    <ValidationMessage For="@(() => inspecao.Portaria)" />
+                </div>
+                <div class="col-6"></div>
+                <div class="form-group mb-3 col-10 ps-0">
+                    <InputText id="orga" class="form-control form-control-sm" placeholder="Órgão" @bind-Value="inspecao.OrgaoNome"></InputText>
+                    <ValidationMessage For="@(() => inspecao.OrgaoNome)" />
+                </div>
+                <div class="form-group mb-3 col-11 ps-0">
+                    <InputSelect id="orgao" class="form-control form-select-sm" @bind-Value="inspecao.OrgaoNome">
+                        <option value="">Selecione o Órgão</option>
+                        @foreach (var pj in pjs)
+                        {
+                            <option>@pj.Nome</option>
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="@(() => inspecao.OrgaoNome)" />
+                </div>
+                <div class="col-2"></div>
+                <div class="t-4 d-grid gap-2 col-2 mx-auto">
+                    <button type="submit" class="btn btn-primary" @onclick="() => (Counter())">Enviar</button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+    <div class="container col-6 p-0">
+        <div class="container col-11 ms-0 bg-info">
+            <h3>teste</h3>
+        </div>
+        <div class="container col-11 bg-danger p-5 ms-0 mt-1">
+            <h3>teste</h3>
+            <h3>teste</h3>
+        </div>
+    </div>
+</div>
+*@

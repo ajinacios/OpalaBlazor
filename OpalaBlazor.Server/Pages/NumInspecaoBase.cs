@@ -1,14 +1,11 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
 using OpalaBlazor.Models.Dtos;
-using OpalaBlazor.Server.Authentication;
 using OpalaBlazor.Server.Services.Contracts;
-using System.ComponentModel.DataAnnotations;
 
 namespace OpalaBlazor.Server.Pages
 {
-    public class NumInspecaoBase:ComponentBase
+    public class NumInspecaoBase : ComponentBase
     {
         [Inject]
         public IInspecaoService inspecaoService { get; set; }
@@ -23,7 +20,11 @@ namespace OpalaBlazor.Server.Pages
         [Inject]
         public NavigationManager navManager { get; set; }
 
-        public InspecaoDto inspecao = new InspecaoDto();
+        public InspecaoDto inspecao = new InspecaoDto()
+        {
+            Numero = GlobalData.inspecao
+        };
+
         public List<InspecaoDto> inspecoes = new List<InspecaoDto>();
         public List<PessoaJurMinDto> pjs = new List<PessoaJurMinDto>();
         public List<PessoaFisMinDto> pfs = new List<PessoaFisMinDto>();
@@ -50,7 +51,7 @@ namespace OpalaBlazor.Server.Pages
 
         public async void Detalhar()
         {
-            foreach(var inp in inspecoes)
+            foreach (var inp in inspecoes)
             {
                 if (inp.Numero == inspecao.Numero)
                 {
@@ -69,7 +70,12 @@ namespace OpalaBlazor.Server.Pages
             {
                 detalhe = true;
             }
-    
+
+        }
+
+        public void onnumero()
+        {
+            detalhe = false;
         }
 
         protected async Task Counter()
@@ -83,7 +89,7 @@ namespace OpalaBlazor.Server.Pages
 
                 throw;
             }
-            
+
         }
     }
 }

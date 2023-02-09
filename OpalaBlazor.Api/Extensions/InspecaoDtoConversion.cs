@@ -1,16 +1,10 @@
-﻿using OpalaBlazor.Api.Data;
-using OpalaBlazor.Api.Entities;
-using OpalaBlazor.Api.Migrations;
-using OpalaBlazor.Api.Repositories;
+﻿using OpalaBlazor.Api.Entities;
 using OpalaBlazor.Models.Dtos;
 
 namespace OpalaBlazor.Api.Extensions
 {
     public static class InspecaoDtoConversion
     {
-
-        
-
         public static IEnumerable<InspecaoDto> ConvertToDto(this IEnumerable<Inspecao> inspecoes,
             IEnumerable<PessoaJur> pjs)
         {
@@ -26,7 +20,7 @@ namespace OpalaBlazor.Api.Extensions
                         Inicio = inspecao.Inicio,
                         Final = inspecao.Final,
                         Portaria = inspecao.Portaria,
-                        OrgaoId= inspecao.OrgaoId,
+                        OrgaoId = inspecao.OrgaoId,
                         OrgaoNome = pj.Nome
                     }).ToList();
         }
