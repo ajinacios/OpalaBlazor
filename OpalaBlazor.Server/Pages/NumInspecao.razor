@@ -8,11 +8,11 @@
         <EditForm Model="inspecao" OnValidSubmit="Detalhar" class="row">
             <DataAnnotationsValidator></DataAnnotationsValidator>
             <div class="form-group col-9">
-                <InputText id="numero" class="form-control" placeholder="Número de inspeção" @bind-Value="inspecao.Numero" @oninput="onnumero"></InputText>
+                <InputText id="numero" class="form-control" placeholder="Número de inspeção" @bind-value="inspecao.Numero" @oninput="onnumero"></InputText>
                 <ValidationMessage For="@(() => inspecao.Numero)" />
             </div>
             <div class="col-3">
-                <button class="btn btn-primary" > Enviar </button>
+                <button class="btn btn-primary"> Enviar </button>
             </div>
         </EditForm>
     </div>
@@ -21,7 +21,7 @@
 @if (detalhe)
 {
     @*<InspecaoData idinspecao="inspecao"></InspecaoData>*@
-    
+
     <hr />
     <div class="container row">
 
@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-group mb-3 col-5 ps-3">
                         <InputDate id="final" class="form-control form-control-sm" placeholder="Final" @bind-Value="inspecao.Final"></InputDate>
-                       <ValidationMessage For="@(() => inspecao.Final)" />
+                        <ValidationMessage For="@(() => inspecao.Final)" />
                     </div>
                     <div class="form-group mb-3 col-6 ps-0">
                         <InputText id="portaria" class="form-control form-control-sm" placeholder="Portaria" @bind-Value="inspecao.Portaria"></InputText>
@@ -68,9 +68,29 @@
             </div>
         </div>
         <div class="container col-6 p-0">
-            <div class="container col-11 ms-0 bg-info">
-                <h3>teste</h3>
-            </div>
+            <table class="table table-bordered table-striped table-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Matricula</th>
+                        <th>Nome</th>
+                        <th>Funcao</th>
+                        <th>Setor</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var inspservamp in inspservamps)
+                    {
+                        <tr>
+                            <td>@inspservamp.Matricula</td>
+                            <td>@inspservamp.Nome</td>
+                            <td>@inspservamp.Funcao</td>
+                            <td>@inspservamp.Setor</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
             <div class="container col-11 bg-danger p-5 ms-0 mt-1">
                 <h3>teste</h3>
                 <h3>teste</h3>

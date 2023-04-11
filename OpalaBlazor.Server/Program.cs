@@ -38,6 +38,11 @@ builder.Services.AddHttpClient<IServidorService, ServidorService>(client =>
 {
     client.BaseAddress = new Uri("https://localhost:3000");
 });
+builder.Services.AddSingleton<InspecaoServService>();
+builder.Services.AddHttpClient<IInspecaoServService, InspecaoServService>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:3000");
+});
 
 var app = builder.Build();
 

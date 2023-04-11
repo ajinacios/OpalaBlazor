@@ -22,6 +22,21 @@ namespace OpalaBlazor.Api.Controllers
         }
 
         [HttpGet]
+        public async Task<ActionResult<List<InspecaoServAmpDto>>> ListAll()
+        {
+            var inspservs = inspecaoServRepository.ListAll();
+            var inspecoes = inspecaoRepository.ListAll();
+            var servidores = servidorRepository.ListAll();
+            var inspservsDtos = inspservs.ConvertToAmpDto(inspecoes, servidores);
+
+            if (inspservs is null)
+            {
+                return NotFound("Não existem servidores ligados a inspeção.");
+            }
+            return Ok(inspservsDtos);
+        }
+
+        [HttpGet]
         [Route("insp/{insp:int}")]
         public async Task<ActionResult<List<InspecaoServidorDto>>> ListPorInspecao(int insp)
         {

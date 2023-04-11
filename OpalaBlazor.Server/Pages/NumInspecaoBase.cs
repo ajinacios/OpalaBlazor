@@ -16,6 +16,8 @@ namespace OpalaBlazor.Server.Pages
         [Inject]
         public IServidorService servidorService { get; set; }
         [Inject]
+        public IInspecaoServService inspecaoservService { get; set; }
+        [Inject]
         public IJSRuntime js { get; set; }
         [Inject]
         public NavigationManager navManager { get; set; }
@@ -29,6 +31,8 @@ namespace OpalaBlazor.Server.Pages
         public List<PessoaJurMinDto> pjs = new List<PessoaJurMinDto>();
         public List<PessoaFisMinDto> pfs = new List<PessoaFisMinDto>();
         public List<ServidorMinDto> servidores = new List<ServidorMinDto>();
+        public List<InspecaoServAmpDto> inspservs = new List<InspecaoServAmpDto>();
+        public List<InspecaoServAmpDto> inspservamps = new List<InspecaoServAmpDto>();
 
         public bool detalhe = false;
 
@@ -47,6 +51,7 @@ namespace OpalaBlazor.Server.Pages
             pjs = (List<PessoaJurMinDto>)await pjService.GetListAllMin();
             pfs = (List<PessoaFisMinDto>)await pfService.GetListAllMin();
             servidores = (List<ServidorMinDto>)await servidorService.GetListAllMin();
+            inspservs = (List<InspecaoServAmpDto>)await inspecaoservService.GetListAll();
         }
 
         public async void Detalhar()
@@ -68,6 +73,23 @@ namespace OpalaBlazor.Server.Pages
             }
             else
             {
+                foreach (var inpserv in inspservs)
+                {
+                    inspservamps.Clear();
+                    if (inpserv.InspecaoId == inspecao.InspecaoId)
+                    {
+                        inspservamps.Add(new InspecaoServAmpDto()
+                        {
+                            InspecaoId = inpserv.InspecaoId,
+                            ServidorId = inpserv.ServidorId,
+                            Matricula = inpserv.Matricula,
+                            Nome = inpserv.Nome,
+                            Setor = inpserv.Setor,
+                            Funcao = inpserv.Funcao
+                        });
+
+                    }
+                }
                 detalhe = true;
             }
 
@@ -75,6 +97,17 @@ namespace OpalaBlazor.Server.Pages
 
         public void onnumero()
         {
+            GlobalData.inspecao = "";
+            inspecao = new InspecaoDto();
+            //foreach (var inp in inspecoes)
+            //{
+            //    if (inp.Numero == inspecao.Numero)
+            //    {
+            //        inspecao = inp;
+            //        GlobalData.inspecao = inp.Numero;
+            //        break;
+            //    }
+            //}
             detalhe = false;
         }
 
